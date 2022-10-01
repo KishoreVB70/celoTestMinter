@@ -4,8 +4,7 @@ import { useContractKit } from "@celo-tools/use-contractkit";
 import { Notification } from "./components/ui/Notifications";
 import Wallet from "./components/Wallet";
 import Cover from "./components/Cover";
-import Counter from "./components/Counter";
-import { useBalance, useCounterContract } from "./hooks";
+import { useBalance, useMinterContract } from "./hooks";
 import "./App.css";
 import { useState } from "react";
 
@@ -13,7 +12,7 @@ const App = function AppWrapper() {
   let contractAddress = "0x0a89DE93dc853cbbC5D9cFaB3c683f529882F1Fe";
   const { address, destroy, connect, performActions, kit } = useContractKit();
   const { balance } = useBalance();
-  const minterContract = useCounterContract();
+  const minterContract = useMinterContract();
 
   const [nftID, setNftId] = useState("");
   const [inputToken, setInputToken] = useState("");
