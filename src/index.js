@@ -23,8 +23,8 @@ ReactDOM.render(
         chainId: 44787,
       }}
       dapp={{
-        name: "Celo React Boilerplate",
-        description: "A React Boilerplate for Celo Dapps",
+        name: "Test Minter",
+        description: "A Site to mint NFT's for testing",
       }}
     >
       <App />

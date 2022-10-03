@@ -10,13 +10,13 @@ import { useState } from "react";
 
 const App = function AppWrapper() {
   let contractAddress = "0x0a89DE93dc853cbbC5D9cFaB3c683f529882F1Fe";
-  const { address, destroy, connect, performActions, kit } = useContractKit();
+  const { address, destroy, connect, performActions } = useContractKit();
   const { balance } = useBalance();
   const minterContract = useMinterContract();
 
   const [nftID, setNftId] = useState("");
-  const [inputToken, setInputToken] = useState("");
-  const [inputAddress, setinputAddress] = useState("");
+  // const [inputToken, setInputToken] = useState("");
+  // const [inputAddress, setinputAddress] = useState("");
 
   const mintNFT = async() => {
     try {
@@ -30,16 +30,16 @@ const App = function AppWrapper() {
       }
   }
 
-  const getApproval = async() => {
-    try {
-      await performActions(async (kit) => {
-          const {defaultAccount} = kit;
-          await minterContract.methods.approve(inputAddress, inputToken).send({from: defaultAccount});
-      });
-    } catch (e) {
-      console.log({e});
-      }
-  }
+  // const getApproval = async() => {
+  //   try {
+  //     await performActions(async (kit) => {
+  //         const {defaultAccount} = kit;
+  //         await minterContract.methods.approve(inputAddress, inputToken).send({from: defaultAccount});
+  //     });
+  //   } catch (e) {
+  //     console.log({e});
+  //     }
+  // }
 
   const getCount = async() => {
     const value =  await minterContract.methods.getId().call();
@@ -80,10 +80,10 @@ const App = function AppWrapper() {
             <p >Last minted NFT Id: {nftID}</p>
             <p>Click to mint your own NFT👇</p>
             <button onClick={mintNFT} className='mintButton' >Mint an NFT</button>
-            <p>Click here to give approval to the Loan mintercontract 👇</p>
+            {/* <p>Click here to give approval to the Loan mintercontract 👇</p>
             <input placeholder='token Id' value={inputToken}  onChange={(e) => setInputToken(e.target.value)} />
             <input placeholder='Contract Address' value={inputAddress}  onChange={(e) => setinputAddress(e.target.value)} />
-            <button onClick={getApproval} >Give Approval</button>
+            <button onClick={getApproval} >Give Approval</button> */}
           </main>
         </Container>
       ) : (
