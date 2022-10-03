@@ -43,7 +43,8 @@ const App = function AppWrapper() {
 
   const getCount = async() => {
     const value =  await minterContract.methods.getId().call();
-    setNftId(value);
+    let _value = value - 1;
+    setNftId(_value);
   }
 
   useEffect(() => {
